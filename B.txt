@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        boolean found = true;
+        while (found){
+            String DNA = s.nextLine();
+            if (DNA.length()<=1000000 && DNA.length()>=1&& DNA.matches("^[CGTA]+$")){
+                int max_n = 1;
+                int count = 1;
+                for(int j = 1; j<DNA.length();j++){
+                    if (DNA.charAt(j)==DNA.charAt(j-1)){
+                        count++;
+                    } else {
+                        max_n = Math.max(max_n, count);
+                        count = 1;
+                    }
+                }
+                max_n = Math.max(max_n, count);
+
+                System.out.println(max_n);
+                found=false;
+
+                }
+                
+            }
+        }
+    }

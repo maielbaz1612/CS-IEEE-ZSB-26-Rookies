@@ -1,0 +1,58 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        HashSet<Integer> inputs = new HashSet<>();
+        
+        int X = s.nextInt();
+        while (X < 1 || X > 100) {
+            System.out.println("invalid number");
+            X = s.nextInt();
+        }
+        
+        int size = s.nextInt();
+        while (size < 1 || size > 100) {
+            System.out.println("invalid number");
+            size = s.nextInt();
+        }
+        
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = s.nextInt();
+            while (arr[i] < 1 || arr[i] > 100) {
+            System.out.println("invalid number");
+            arr[i] = s.nextInt();
+        }
+        }
+        
+        int Q = s.nextInt();
+        while (Q < 1 || Q > 100) {
+            System.out.println("invalid number");
+            Q = s.nextInt();
+        }
+            int [] p = new int[Q];
+        
+        for (int i = 0; i < Q; i++) {
+            p[i] = s.nextInt();
+            while (p[i] > size || p[i] < 1) {
+                System.out.println("invalid number");
+                p[i] = s.nextInt();
+            }
+            
+        }
+        for (int i = 0; i < Q; i++) {
+            if (inputs.contains(p[i] - 1)) {
+                X -= arr[p[i] - 1];
+                inputs.remove(p[i] - 1);
+                System.out.println(X);
+            } else {
+                X += arr[p[i] - 1];
+                inputs.add(p[i] - 1);
+                System.out.println(X);
+                }
+        }
+        s.close();
+    }
+}
