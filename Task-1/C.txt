@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        
+        long sum = (long) n * (n + 1) / 2;
+        
+        if (sum % 2 == 0) {
+            System.out.println("YES");
+            
+            long half = sum / 2;
+            StringBuilder set1 = new StringBuilder();
+            StringBuilder set2 = new StringBuilder();
+            int count1 = 0, count2 = 0;
+            
+            for (int i = n; i >= 1; i--) {
+                if (i <= half) {
+                    if (count1 > 0){
+                        set1.append(" ");
+                    }
+                    set1.append(i);
+                    count1++;
+                    half -= i;
+                } else {
+                    if (count2 > 0) set2.append(" ");
+                    set2.append(i);
+                    count2++;
+                }
+            }
+            
+            System.out.println(count1);
+            System.out.println(set1);
+            System.out.println(count2);
+            System.out.println(set2);
+            
+        } else {
+            System.out.println("NO");
+        }
+        
+        s.close();
+    }
+}

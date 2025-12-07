@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+
+public class Main {
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        
+        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int x = Integer.parseInt(st.nextToken());
+        
+        st = new StringTokenizer(br.readLine());
+        int[] arr = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < n; i++) {
+            int remain = x - arr[i];
+            if (map.containsKey(remain)) {
+                System.out.println((map.get(remain) + 1) + " " + (i + 1));
+                br.close();
+                return;
+            }
+            map.put(arr[i], i);
+        }
+        
+        System.out.println("IMPOSSIBLE");
+        br.close();
+    }
+}
