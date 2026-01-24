@@ -10,13 +10,14 @@ public class CellularNetwork {
         
         for (int city : cities) {
             int pos = Arrays.binarySearch(towers, city);
+            int Right = Integer.MAX_VALUE;
+            int Left = Integer.MAX_VALUE;
+
             if (pos < 0) {
                 pos = -(pos + 1);
             } else {
                 continue; 
             }
-            int Right = Integer.MAX_VALUE;
-            int Left = Integer.MAX_VALUE;
             
             if (pos < towers.length) {
                 Right = towers[pos] - city;
